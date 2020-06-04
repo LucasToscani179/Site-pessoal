@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Meu site/css/Meu_site.css">
+    <title>Gamers dinamicos</title>
+
+</head>
+<!--fachada-->
+
+<body>
+    <div class="brand">
+        <div class="conteiner">
+            <div class="pimba">
+                <h1>Gamers Dinamicos</h1>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li class="casa"><a href="index.html"> Home</a></li>
+                    <li><a href="Sobre.html"> Sobre</a></li>
+                    <li><a href="Serviços.html"> Serviços</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="showcase">
+        <div class="caonteiner">
+            <h1>Esse site e bacana :)</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptate perspiciatis qui officia reprehenderit cupiditate molestiae alias minus eum nesciunt incidunt,
+                sequi corrupti totam, quam cumque odit, beatae repellendus consequatur voluptates!
+            </p>
+        </div>
+    </div>
+    <audio src="../Meu site/musica/Runaway U _ I   Galantis [HD][HQ].mp3" id="audioPlay" autoplay controls
+        style="width: 75%;"></audio>
+    <!--fachada fim -->
+
+    <!--Primeiro valor-->
+   
+    <div class="valor1">
+        <img  src="../Meu site/Imagem/fone-de-ouvido.png" alt="" height="200px">
+        <p>Escute suas musicas preferidas!!!</p>
+    </div>
+    
+
+
+
+    <!--ferramenta-->
+
+    <div class="caixa" style="background-color: #1c1c1c"><br>
+        <ul class="musica" id="playlist">
+            <h3 style="color: #ffffff;">--------------------- Musica ------------------------</h3>
+            <li class="current-song"><a
+                    href="../Meu site/musica/Major Lazer & DJ Snake - Lean On (feat. MØ) (Official Music Video).mp3">Major
+                    Lazer & DJ Snake - Lean On
+                </a></li>
+            <li><a href="../Meu site/musica/Marshmello - Silence ft. Khalid.mp3">Marshmello - Silence ft</a></li>
+            <li><a href="../Meu site/musica/Pitbull - Timber (Audio) ft. Ke$ha.mp3">Pitbull - Timber</a></li>
+            <li><a href="../Meu site/musica/Zedd_ Alessia Cara - Stay (Audio).mp3">Zedd_ Alessia Cara - Stay</a></li>
+            <li><a href="../Meu site/musica/Alan Walker - Faded.mp3">Alan Walker - Faded</a></li>
+            <li><a href="../Meu site/musica//Alok _ Mathieu Koss - Big Jet Plane.mp3">Alok- Big Jet Plane</a></li>
+            <li><a href="../Meu site/musica/Avicii - Without You _Audio_ ft. Sandro Cavazza.mp3">Avicii - Without
+                    You</a></li>
+            <li><a href="../Meu site/musica/Capital Cities - Safe and Sound (lyrics).mp3">Capital Cities - Safe and
+                    Sound</a></li>
+            <li><a href="../Meu site/musica/Dua Lipa - New rules (Official Audio).mp3">Dua Lipa - New rules</a></li>
+            <li><a href="../Meu site/musica/Midnight Club 3 DUB Edition Soundtrack - Sunshine.mp3">Anthony
+                    Hamilton-Sunshine</a></li>
+            <li><a href="../Meu site/musica/Sean Kingston - Beautiful Girls - 128K MP3.mp3">Sean Kingston - Beautiful
+                    Girls</a></li>
+            <li><a href="../Meu site/musica/Saint Raymond - Brighter Days [Audio].mp3">Saint Raymond - Brighter Days</a>
+            </li>
+            <li><a href="../Meu site/musica/Imagine Dragons - Thunder (Audio).mp3">Imagine Dragons - Thunder</a></li>
+            <li><a href="../Meu site/musica/Dance Monkey (192  kbps).mp3">tones and i -Dance Monkey</a></li>
+            <li><a href="../Meu site/musica/Lorde - Royals (US Version) - 128K MP3.mp3">Lorde - Royals</a></li>
+            <li><a href="../Meu site/musica/This Is America (192  kbps).mp3">This Is America</a></li>
+            <li><a href="../Meu site/musica/Y2K, bbno$ - Lalala (Lyrics - Lyric Video) Letra (192  kbps).mp3">Y2K, bbno$
+                    - Lalala </a></li>
+            <li><a href="../Meu site/musica/Billie Eilish - bad guy (Official Audio) (192  kbps).mp3">Billie Eilish -
+                    bad guy</a></li>
+
+        </ul>
+    </div>
+    
+    
+    
+
+
+    <!--ferramenta fim-->
+    <div class="footer">
+        <div class="conteiner">
+            <p style="color: #ffffff;">Feito com amor por um aluno!!!</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+<script>
+    audioPlay();
+
+    function audioPlay() {
+
+        var currentSong = 0;
+
+        $("#audioPlay")[0].src = $("#playlist li a")[0];
+        $("#audioPlay")[0].play;
+        $("#playlist li a").click(function (e) {
+            e.preventDefault();
+            $("#audioPlay")[0].src = this;
+            $("#audioPlay")[0].play;
+            $("#playlist li").removeClass("current-song");
+            currentSong = $(this).parent().index();
+            $(this).parent().addClass("current-song");
+        });
+
+        $("#audioPlay")[0].addEventListener("ended", function () {
+            currentSong++;
+            if (currentSong == $("#playlist li a").length)
+                currentSong = 0;
+            $("#playlist li").removeClass("current-song");
+            $("#playlist li:eq(" + currentSong + ")").addClass("current-song");
+            $("#audioPlay")[0].src = $("#playlist li a")[currentSong].href;
+            $("#audioPlay")[0].play();
+
+
+        });
+    }
+</script>
